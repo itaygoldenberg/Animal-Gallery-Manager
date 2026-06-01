@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+    <form>
+<select id="typeOfAnimal"> 
+<option value="cat">Cat</option>
+<option value="dog">Dog</option>
+<option value="fish">Fish</option>
+<option value="rabbit">Rabbit</option>
+<option value="bird">Bird</option>
+
+</select>
+
+<input type="text" id="nameOfAnimal" placeholder="Enter Name Of Animal">
+<input type="number" id="ageOfAnimal" placeholder="Enter Age Of Animal">
+<input type="url" id="urlOfAnimal" placeholder="Enter Url Of Animal">
+
+<button type="button" onclick="addingAnimal()">Adding animal</button>
+
+    </form>
+
+    <table id="tableOfAnimal">
+<thead>
+<tr>
+
+<th>Type</th>
+<th>Name</th>
+<th>Age</th>
+<th>Picture</th>
+
+
+</tr>
+
+</thead>
+
+
+<tbody id="tableOfAnimals"> </tbody>
+
+    </table>
+
+<p id="countDisplayOfAnimals"></p>
+
+</body>
+</html>

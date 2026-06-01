@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-top: rgba(255, 255, 255, 0.22);
+  --glass-shadow: 0 32px 64px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --accent: rgba(100, 180, 255, 0.9);
+  --text-primary: rgba(230, 240, 255, 0.92);
+  --text-secondary: rgba(180, 200, 240, 0.55);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #060a12;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1.5rem 6rem;
+  gap: 2rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 14s ease-in-out infinite alternate;
+}
+
+body::before {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(30, 90, 255, 0.14) 0%, transparent 70%);
+  top: -200px;
+  left: -150px;
+}
+
+body::after {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(130, 50, 230, 0.11) 0%, transparent 70%);
+  bottom: -120px;
+  right: -100px;
+  animation-delay: -7s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes floatOrb {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(50px, 40px) scale(1.1); }
+  100% { transform: translate(-30px, 60px) scale(0.93); }
+}
+
+body > * { position: relative; z-index: 1; }
+
+form {
+  width: 100%;
+  max-width: 460px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(48px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(48px) saturate(200%) brightness(1.08);
+  border: 1px solid var(--glass-border);
+  border-top-color: var(--glass-border-top);
+  border-radius: 28px;
+  padding: 2.25rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: var(--glass-shadow), 0 0 0 0.5px rgba(255,255,255,0.04) inset;
+  animation: slideUp 0.65s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  position: relative;
+  overflow: hidden;
+}
+
+form::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45) 50%, transparent);
+  pointer-events: none;
+}
+
+form::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: radial-gradient(ellipse 70% 35% at 50% 0%, rgba(80,160,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+select,
+input[type="text"],
+input[type="number"],
+input[type="url"] {
+  width: 100%;
+  padding: 0.78rem 1rem;
+  background: var(--input-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease, transform 0.18s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(140,180,255,0.45)' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+select option {
+  background: #0d1420;
+  color: var(--text-primary);
+}
+
+input::placeholder {
+  color: rgba(150, 180, 230, 0.25);
+  font-weight: 300;
+}
+
+input:hover, select:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+input:focus, select:focus {
+  border-color: rgba(90, 165, 255, 0.5);
+  background: rgba(60, 130, 255, 0.07);
+  box-shadow: 0 0 0 3px rgba(70, 145, 255, 0.13), 0 0 24px rgba(70, 145, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+input[type="number"] { -moz-appearance: textfield; }
+
+button {
+  width: 100%;
+  padding: 0.88rem;
+  margin-top: 0.25rem;
+  background: linear-gradient(135deg, rgba(50, 120, 255, 0.18), rgba(100, 50, 220, 0.14));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(90, 155, 255, 0.26);
+  border-top-color: rgba(150, 205, 255, 0.32);
+  border-radius: var(--radius-md);
+  color: rgba(175, 215, 255, 0.95);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.4, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180, 220, 255, 0.5) 50%, transparent);
+  pointer-events: none;
+}
+
+button:hover {
+  background: linear-gradient(135deg, rgba(65, 140, 255, 0.28), rgba(110, 60, 235, 0.2));
+  border-color: rgba(110, 175, 255, 0.42);
+  box-shadow: 0 0 32px rgba(70, 145, 255, 0.18), 0 8px 24px rgba(0,0,0,0.35);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0) scale(0.985);
+  box-shadow: 0 0 16px rgba(70, 145, 255, 0.12);
+}
+
+table {
+  width: 100%;
+  max-width: 820px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(36px) saturate(180%);
+  -webkit-backdrop-filter: blur(36px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-top-color: rgba(255, 255, 255, 0.13);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  animation: slideUp 0.7s cubic-bezier(0.34, 1.4, 0.64, 1) 0.12s both;
+  position: relative;
+}
+
+table::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 6%; right: 6%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2) 50%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+thead {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(130, 170, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+}
+
+th:first-child { padding-left: 1.75rem; }
+th:last-child  { padding-right: 1.75rem; }
+
+tbody tr {
+  transition: background 0.18s ease;
+}
+
+tbody tr:hover { background: rgba(80, 140, 255, 0.04); }
+
+tbody tr + tr td { border-top: 1px solid rgba(255, 255, 255, 0.045); }
+
+td {
+  padding: 0.85rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(210, 225, 255, 0.78);
+  vertical-align: middle;
+}
+
+td:first-child { padding-left: 1.75rem; }
+td:last-child  { padding-right: 1.75rem; }
+
+td img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1), box-shadow 0.3s ease;
+}
+
+td img:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 20px rgba(80, 150, 255, 0.12);
+}
+
+p {
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(120, 160, 255, 0.4);
+  text-align: center;
+  padding: 0.52rem 1.5rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.065);
+  border-radius: 100px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: color 0.3s ease;
+}
+/* ==================================================
+   FINAL REAL FIX - SAFE TITLE WITHOUT BUGS
+   Animal Gallery Manager
+================================================== */
+
+/* Make room for title */
+body {
+  padding-top: 13rem !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+/* Restore body background orbs only */
+body::before,
+body::after {
+  content: '' !important;
+  position: fixed !important;
+  border-radius: 50% !important;
+  filter: blur(90px) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  animation: floatOrb 14s ease-in-out infinite alternate !important;
+}
+
+body::before {
+  width: 700px !important;
+  height: 700px !important;
+  background: radial-gradient(circle, rgba(30, 90, 255, 0.14) 0%, transparent 70%) !important;
+  top: -200px !important;
+  left: -150px !important;
+}
+
+body::after {
+  width: 550px !important;
+  height: 550px !important;
+  background: radial-gradient(circle, rgba(130, 50, 230, 0.11) 0%, transparent 70%) !important;
+  bottom: -120px !important;
+  right: -100px !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  animation-delay: -7s !important;
+  animation-direction: alternate-reverse !important;
+}
+
+/* Disable broken title from form */
+form::before,
+form::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Keep form normal */
+form {
+  margin-top: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Main title - uses HTML, not body/form */
+html::before {
+  content: 'Animal Gallery Manager';
+
+  position: fixed;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 1100px;
+
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+
+  text-align: center;
+  white-space: nowrap;
+
+  background: linear-gradient(
+    135deg,
+    #eaf7ff 0%,
+    #9edcff 35%,
+    #6eaaff 65%,
+    #a88cff 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 0 28px rgba(90, 165, 255, 0.28),
+    0 0 60px rgba(130, 70, 255, 0.16);
+
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Subtitle */
+html::after {
+  content: 'Create, save and manage your animal collection';
+
+  position: fixed;
+  top: 8.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: fit-content;
+  max-width: 90vw;
+
+  padding: 0.48rem 1.4rem;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.065);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  color: rgba(220, 235, 255, 0.8);
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 0 22px rgba(80, 150, 255, 0.14),
+    0 8px 24px rgba(0, 0, 0, 0.32);
+
+  z-index: 101;
+  pointer-events: none;
+}
+
+/* Make content stay above background only */
+body > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  body {
+    padding-top: 12rem !important;
+  }
+
+  html::before {
+    top: 2.2rem;
+    width: 92vw;
+    font-size: 2.35rem;
+    white-space: normal;
+  }
+
+  html::after {
+    top: 7.4rem;
+    width: 88vw;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    white-space: normal;
+  }
+}
