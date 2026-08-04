@@ -1,58 +1,95 @@
-<div align="center">
+<p align="center">
+  <img src="./docs/readme-banner.svg" alt="Animal Gallery Manager animated project banner" width="100%" />
+</p>
 
-# Animal Gallery Manager
+<p align="center">
+  <a href="https://itaygoldenberg.github.io/Animal-Gallery-Manager/"><img src="./docs/actions/primary.svg" alt="Open the live Animal Gallery Manager application" width="250" /></a>
+  <a href="https://github.com/itaygoldenberg/Animal-Gallery-Manager"><img src="./docs/actions/source.svg" alt="View Animal Gallery Manager source code" width="250" /></a>
+  <a href="https://www.linkedin.com/in/itay-goldenberg/"><img src="./docs/actions/linkedin.svg" alt="Connect with Itay Goldenberg on LinkedIn" width="250" /></a>
+</p>
 
-**A compact browser-based manager for building and maintaining a personal animal gallery.**
+<p align="center">
+  <a href="#overview">Overview</a>&nbsp;&middot;&nbsp;
+  <a href="#features">Features</a>&nbsp;&middot;&nbsp;
+  <a href="#workflow">Workflow</a>&nbsp;&middot;&nbsp;
+  <a href="#technology">Technology</a>&nbsp;&middot;&nbsp;
+  <a href="#running-locally">Local setup</a>
+</p>
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Open_App-14b8a6?style=for-the-badge&logo=githubpages&logoColor=white)](https://itaygoldenberg.github.io/Animal-Gallery-Manager/)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=111)](https://developer.mozilla.org/docs/Web/JavaScript)
-
-</div>
+> [!NOTE]
+> A vanilla JavaScript practice project focused on validated input, dynamic rendering and browser persistence.
 
 ## Overview
 
-Animal Gallery Manager is a vanilla JavaScript application for adding animals to a visual collection. Each entry contains an animal type, name, age and image URL. The interface renders the saved collection dynamically and keeps it available between browser sessions.
+Animal Gallery Manager is a focused browser application for building a visual collection of animals. Each entry combines a type, name, age and image URL, then becomes a structured gallery record.
+
+The entire workflow runs in the browser: JavaScript validates the form, renders the collection and synchronizes it with localStorage so the gallery survives refreshes and future visits.
+
+<table><tr><td align="center" width="25%"><strong>5</strong><br /><sub>animal types</sub></td><td align="center" width="25%"><strong>URL</strong><br /><sub>image input</sub></td><td align="center" width="25%"><strong>LIVE</strong><br /><sub>item count</sub></td><td align="center" width="25%"><strong>LOCAL</strong><br /><sub>saved gallery</sub></td></tr></table>
+
+| Project detail | Implementation |
+|---|---|
+| Collection | Cats, dogs, fish, rabbits and birds |
+| Validation | Required fields, age and image URL checks |
+| Rendering | Dynamic table rows with images and details |
+| Persistence | Browser localStorage with no remote database |
+
+## Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Workflow](#workflow)
+- [Technology](#technology)
+- [Project structure](#project-structure)
+- [Running locally](#running-locally)
+- [Operational notes](#operational-notes)
+- [Author](#author)
 
 ## Features
 
-- Add cats, dogs, fish, rabbits and birds to the gallery.
-- Validate the entered animal information before saving it.
-- Render every animal as a structured row with its image and details.
-- Remove entries from the collection.
-- Display the current number of saved animals.
-- Persist the complete gallery in browser `localStorage`.
-- Work without a backend, database or build step.
+### Guided entry workflow
 
-## Data Flow
+The form captures the animal type, name, age and image URL. Invalid or incomplete entries are rejected before they reach the collection.
 
-```text
-Form input -> validation -> JavaScript object -> localStorage -> gallery table
-```
+### Dynamic gallery
 
-All data remains inside the current browser. Clearing site storage also clears the saved gallery.
+Every saved animal is rendered immediately with its visual identity and details. Entries can be removed individually and the collection count updates with the state.
 
-## Tech Stack
+### Browser persistence
+
+The gallery is serialized to `localStorage`. It remains available after a refresh or browser restart without requiring an account, backend or database.
+
+## Workflow
+
+<p align="center">
+  <img src="./docs/workflow.svg" alt="Animal Gallery Manager animated application workflow" width="100%" />
+</p>
+
+## Technology
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js" alt="Animal Gallery Manager primary technology logos" />
+</p>
 
 | Technology | Role |
 |---|---|
-| HTML5 | Semantic form and gallery structure |
-| CSS3 | Responsive layout and visual styling |
-| JavaScript | Validation, DOM rendering and state management |
-| Web Storage API | Persistent browser-side data |
+| HTML5 | Accessible form and gallery structure |
+| CSS3 | Responsive layout and visual presentation |
+| JavaScript | Validation, state updates and DOM rendering |
+| Web Storage API | Persistent browser-side collection |
 
-## Project Structure
+## Project structure
 
 ```text
 Animal-Gallery-Manager/
 |-- index.html     Application markup
-|-- style.css      Layout and presentation
-|-- main.js        Validation, storage and rendering logic
+|-- style.css      Layout and visual presentation
+|-- main.js        Validation, storage and rendering
+|-- docs/          README-only visual assets
 `-- README.md      Project documentation
 ```
 
-## Run Locally
+## Running locally
 
 No installation is required.
 
@@ -61,10 +98,21 @@ git clone https://github.com/itaygoldenberg/Animal-Gallery-Manager.git
 cd Animal-Gallery-Manager
 ```
 
-Open `index.html` in a browser, or serve the folder with a lightweight local server such as VS Code Live Server.
+Open `index.html` directly or serve the folder with VS Code Live Server.
+
+## Operational notes
+
+- Saved animals belong to the current browser profile.
+- Clearing site storage also clears the gallery.
 
 ## Author
 
-Built by **Itay Goldenberg**.
+<p align="center">
+  <strong>Itay Goldenberg</strong><br />
+  Full Stack Developer Student
+</p>
 
-[GitHub](https://github.com/itaygoldenberg) | [LinkedIn](https://www.linkedin.com/in/itay-goldenberg/)
+<p align="center">
+  <a href="https://github.com/itaygoldenberg"><img src="./docs/actions/github.svg" alt="Itay Goldenberg on GitHub" width="250" /></a>
+  <a href="https://www.linkedin.com/in/itay-goldenberg/"><img src="./docs/actions/linkedin.svg" alt="Itay Goldenberg on LinkedIn" width="250" /></a>
+</p>
